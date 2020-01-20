@@ -21,11 +21,14 @@ class Family:
         return member
 
     def delete_member(self, id):
-        pass
+        obj = self.get_member(id)
+        self._members.remove(obj)
+        return self._members
+        
     def update_member(self, id, member):
         obj = self.get_member(id)
         obj.update(member)
-        return obj
+        return self._members
     def get_member(self, id):
         member = list(filter(lambda item: item["id"] == id , self._members))
         return member[0]

@@ -65,5 +65,13 @@ def members(id = None):
         }
         member = fam.update_member(id,newUpdate)
         return jsonify(member), 200
+    if request.method == 'DELETE':
+        if id is not None:
+            member = fam.delete_member(id)
+            return jsonify({"msg": "Member deleted"}), 200
+        else:
+            members = fam.get_all_members()
+            return jsonify(members), 200
+
 if __name__ == "__main__":
     manager.run()
